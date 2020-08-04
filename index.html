@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Battle of Bands Registration</title>
+    <link href="Styles/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="Scripts/model.js" type="text/javascript"></script>
+    <script src="Scripts/controller.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="bandEditArea">
+        <h1 id="formTitle"></h1> 
+        <form name="editForm">
+            <table border="1" cellspacing="3" cellpadding="3" id="addBandTable">
+                <tr>
+                    <td>Band Name:</td>
+                    <td><input type="text" name="bandNameEdit" /></td>
+                    <td id="bandNameError">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Lead Singer:</td>
+                    <td><input type="text" name="leadSingerEdit" /></td>
+                    <td id="leadSingerError">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Genre:</td>
+                    <td>
+                        <select name="genreSelect">
+                            <option value="Rock">Rock</option>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                            <option value="Folk">Indie-Folk</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                    <td id="genreError">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Home State:</td>
+                    <td>
+                        <select name="stateSelect">
+                            <option value="Alabama">AL</option>
+                            <option value="Arizona">AZ</option>
+                            <option value="Arkansas">AR</option>
+                            <option value="California">CA</option>
+                            <option value="Colorado">CO</option>
+                            <option value="Connecticut">CT</option>
+                            <option value="Delaware">DE</option>
+                            <option value="Florida">FL</option>
+                            <option value="Georgia">GA</option>
+                            <option value="Idaho">ID</option>
+                            <option value="Illinois">IL</option>
+                            <option value="Indiana">IN</option>
+                            <option value="Iowa">IA</option>
+                            <option value="Kansas">KS</option>
+                            <option value="Kentucky">KY</option>
+                            <option value="Louisiana">LA</option>
+                            <option value="Maine">ME</option>
+                            <option value="Maryland">MD</option>
+                            <option value="Massachusetts">MA</option>
+                            <option value="Michigan">MI</option>
+                            <option value="Minnesota">MN</option>
+                            <option value="Mississippi">MS</option>
+                            <option value="Missouri">MO</option>
+                            <option value="Montana">MT</option>
+                            <option value="Nebraska">NE</option>
+                            <option value="Nevada">NV</option>
+                            <option value="New Hampshire">NH</option>
+                            <option value="New Jersey">NJ</option>
+                            <option value="New Mexico">NM</option>
+                            <option value="New York">NY</option>
+                            <option value="North Carolina">NC</option>
+                            <option value="North Dakota">ND</option>
+                            <option value="Ohio">OH</option>
+                            <option value="Oklahoma">OK</option>
+                            <option value="Oregon">OR</option>
+                            <option value="Pennsylvania">PA</option>
+                            <option value="Rhode Island">RI</option>
+                            <option value="South Carolina">SC</option>
+                            <option value="South Dakota">SD</option>
+                            <option value="Tennessee">TN</option>
+                            <option value="Texas">TX</option>
+                            <option value="Utah">UT</option>
+                            <option value="Vermont">VT</option>
+                            <option value="Virginia">VA</option>
+                            <option value="Washington">WA</option>
+                            <option value="West Virginia">WV</option>
+                            <option value="Wisconsin">WI</option>
+                            <option value="Wyoming">WY</option>
+                        </select>
+                    </td>
+                    <td id="stateError">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Years as a Band:</td>
+                    <td><input type="text" name="yearsEdit" /></td>
+                    <td id="yearsError">&nbsp;</td>
+                </tr>
+                                <tr>
+                    <td>Are you on Spotify?</td>
+                    <td>
+                        <label><input type="radio" name="spotifyBtn" value="yes" id="yesRadio" />Yes</label><br />
+                        <label><input type="radio" name="spotifyBtn" value="no" id="noRadio" />No</label>
+                    </td>
+                    <td id="spotifyError">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td><input type="text" name="phoneNumberEdit" /></td>
+                    <td id="phoneNumberError">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="canText" />
+                        </label>
+                        Opt in to be contacted via text
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" id="updateBtn">Update Entry</button>
+                        <button type="button" id="registerBtn">Register</button>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <button type="button" id="cancelBtn">Cancel</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="bandListArea">
+            <h1>Open Mic Lineup</h1>
+            <table border="1" id="bandTable">
+                <tr>
+                    <th>Genre</th>
+                    <th>Band Name</th>
+                    <th>Home State</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+            <table id="addBandBtn">
+                <tr>
+                    <td>
+                        <button class="newBtn" type="button" id="newBtn">New Band</button>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+    <script>
+        //Add some test data to the model
+        //Initialize all the controller
+
+        $(document).ready(function () {
+            modelCreateBand("Boy Pablo", "Nicolas Munoz", "Folk", "Utah", "3", true, "3331111234", true);
+            modelCreateBand("Panic! at the Disco", "Brendon Urie", "Rock", "Nevada", "14", true, "7211233211", true);
+            modelCreateBand("One Direction", "Harry Styles", "Pop", "New Mexico", "5", true, "1231233211", true);
+            modelCreateBand("Tiny Meat Gang", "Cody & Noel", "Hip-Hop", "California", "2", true, "5555555555", true);
+            modelCreateBand("Rebuilt Janitor", "George Bunsh", "Other", "Florida", "1", false, "3211235435", true);
+
+            onPageLoad();
+        });
+    </script>
+</body>
+</html>
